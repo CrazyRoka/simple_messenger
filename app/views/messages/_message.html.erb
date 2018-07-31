@@ -1,12 +1,5 @@
-<table>
-  <tr>
-    <td>From</td>
-    <td>To</td>
-    <td>Text</td>
-  </tr>
-  <% @messages.each do |message| %>
-    <td><%= message.from %></td>
-    <td><%= message.to %></td>
-    <td><%= message.text %></td>
-  <% end %>
-</table>
+<tr>
+  <td><%= message.receiver.name %></td>
+  <td><%= message.sender.name %></td>
+  <td><%= message.text %></td>
+</tr>

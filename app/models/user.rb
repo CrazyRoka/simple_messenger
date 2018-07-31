@@ -1,3 +1,4 @@
 class User < ApplicationRecord
-  has_many :messages, foreign_key: 'sender_id'
+  has_many :send_messages, foreign_key: 'sender_id', class_name: 'Message'
+  has_many :received_messages, foreign_key: 'receiver_id', class_name: 'Message'
 end

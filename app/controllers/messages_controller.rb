@@ -2,7 +2,8 @@ class MessagesController < ApplicationController
   before_action :set_user
 
   def index
-    @messages = @user.messages
+    @messages = @user.send_messages | @user.received_messages
+    p @messages
   end
 
   private
