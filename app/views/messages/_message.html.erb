@@ -1,6 +1,7 @@
-<tr>
-  <td><%= message.receiver.name %></td>
-  <td><%= message.sender.name %></td>
-  <td><%= message.text %></td>
-  <td><%= message.created_at %></td>
-</tr>
+<li
+  <% if current_user == message.sender %>
+    class = 'me'
+  <% else %>
+    class = 'him'
+  <% end %>
+><%= message.text %></li>

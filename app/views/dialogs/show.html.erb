@@ -1,11 +1,5 @@
-<table>
-  <tr>
-    <td>From</td>
-    <td>To</td>
-    <td>Message</td>
-    <td>At</td>
-  </tr>
-  <%= render @messages %>
-</table>
+<ul>
+<%= render @messages %>
+</ul>
 
 <%= render 'form', message: Message.new %>

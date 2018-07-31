@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.create!(message_params.merge(sender: current_user))
+    @message = Message.create(message_params.merge(sender: current_user))
     redirect_to dialog_url(id: @message.receiver.id)
   end
 
