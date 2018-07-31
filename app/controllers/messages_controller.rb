@@ -1,18 +1,18 @@
 class MessagesController < ApplicationController
-  before_action :set_user
+  before_action :authenticate_user!
 
   def index
-    @messages = @user.send_messages | @user.received_messages
-    p @messages
+    @messages = current_user.send_messages | current_user.received_messages
+  end
+
+  def create
+    @message = Message.create!(message_params.merge(sender: current_user))
+    redirect_to dialog_url(id: @message.receiver.id)
   end
 
   private
 
-  def set_user
-    @user = User.find(params[:user_id])
-  end
-
-  def user_params
-    params.require(:message).permit(:sender, :receiver, :text)
+  def message_params
+    params.require(:message).permit(:receiver_id, :text)
   end
 end

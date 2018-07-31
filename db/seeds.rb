@@ -9,8 +9,13 @@
 User.destroy_all
 Message.destroy_all
 
-roka = User.create name: 'Roka', password_digest: '123'
-john = User.create name: 'John', password_digest: '321'
+roka = User.new name: 'Roka', email: 'roka@gmail.com'
+roka.password = roka.password_confirmation = '123456'
+roka.save!
 
-Message.create sender: roka, receiver: john, text: 'Hello!'
-Message.create sender: john, receiver: roka, text: 'Hi!'
+john = User.new name: 'John', email: 'john@gmail.com'
+john.password = john.password_confirmation = '123456'
+john.save!
+
+Message.create! sender: roka, receiver: john, text: 'Hello!'
+Message.create! sender: john, receiver: roka, text: 'Hi!'

@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <td>User nickname</td>
+    <td>User email</td>
+    <td colspan="5"></td>
+  </tr>
+  <% User.all.each do |user| %>
+    <% if user != current_user %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= link_to "Start messanging", controller: "dialogs", action: "show", id: user %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
